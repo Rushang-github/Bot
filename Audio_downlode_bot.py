@@ -1,25 +1,25 @@
 import telebot
 import os
-import time
 import yt_dlp
 
 # Hardcode your bot token here
-BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE'  # Replace with your actual bot token
+BOT_TOKEN = '7259648906:AAFJ_ghk6tmg5VAA1O8rvp2dD023nS9oQBI'  # Replace with your actual bot token
 
-bot = telebot.TeleBot(BOT_TOKEN, parse_mode='HTML')
+bot = telebot.TeleBot(BOT_TOKEN)
 
 filePath = os.getcwd() + '/Audio/'
 
 # Handler for /start command
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.send_message(message.chat.id, '''<i>Welcome to MiniTake!</i> Send me a YouTube video link and I'll send you the audio in seconds.''')
+    bot.send_message(message.chat.id, '''Welcome to MiniTake!
+Send me a YouTube video link and I'll send you the audio in seconds.''')
 
 # Handler for receiving text messages
 @bot.message_handler(content_types=['text'])
 def receive_link(message):
     url = message.text  # Get the YouTube URL directly from the message
-    msg = bot.send_message(message.chat.id, '''😎 <i>Downloading the music...</i>''')
+    msg = bot.send_message(message.chat.id, '''😎 Downloading the music...''')
 
     try:
         content = os.path.join(filePath, str(message.chat.id) + '/')
@@ -36,11 +36,10 @@ def receive_link(message):
 
         with open(file_path, 'rb') as audio:
             bot.send_chat_action(message.chat.id, 'upload_audio')
-            bot.edit_message_text(text=f'''😎 <i>Sending the audio!</i>''',
-                                  chat_id=message.chat.id,
-                                  message_id=msg.message_id)
+            bot.edit_message_text(text=f'''😎 Sending the audio!''',chat_id=message.chat.id,message_id=msg.message_id)
             bot.send_audio(message.chat.id, audio)
-            bot.edit_message_text(text=f'''🎸 <i>The music has been sent!</i>''',
+
+        bot.edit_message_text(text=f'''🎸 The music has been sent!''',
                                   chat_id=message.chat.id,
                                   message_id=msg.message_id)
 
@@ -60,7 +59,7 @@ def receive_link(message):
             if os.path.isdir(content):
                 os.rmdir(content)
 
-        bot.edit_message_text(text=f'''😓 <i>Connection error! Cannot download the music.</i>\nError: {e}''',
+        bot.edit_message_text(text=f'''😓 Connection error! Cannot download the music.\nError: {e}''',
                               chat_id=message.chat.id,
                               message_id=msg.message_id)
 
