@@ -12,7 +12,7 @@
 
 ## Requirements
 
-To run the bot, youâ€™ll need:
+To run the bot, you will need:
 
 - Python 3.x
 - The following Python libraries:
