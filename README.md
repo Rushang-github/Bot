@@ -36,8 +36,3 @@ pip install pyTelegramBotAPI yt-dlp
 
 1. `/start`: Welcomes the user to MiniTake.
 2. Send a YouTube link: The bot will respond with "Downloading the music..." and then deliver the MP3 file.
-
-## Code Structure
-
-- `bot.py`: The main script that handles all bot commands and the audio download process using `yt-dlp`.
-  
