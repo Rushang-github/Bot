@@ -8,11 +8,13 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 filePath = os.getcwd() + '/Audio/'
 
+print('The bot is listening!')
+
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     bot.send_message(
         message.chat.id, 
-        '''Welcome to MiniTake! Send me a YouTube video link, and I'll send you the audio in seconds.'''
+        '''Welcome to Audio_downloder! Send me a YouTube video link, and I'll send you the audio in seconds.'''
     )
 
 @bot.message_handler(content_types=['text'])
@@ -61,6 +63,4 @@ def receive_link(message):
             message_id=msg.message_id
         )
 
-if __name__ == '__main__':
-    print('The bot is listening!')
-    bot.infinity_polling()
+bot.infinity_polling()
