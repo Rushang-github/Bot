@@ -2,7 +2,7 @@ import telebot
 import os
 import yt_dlp
 
-BOT_TOKEN = '7259648906:AAFJ_ghk6tmg5VAA1O8rvp2dD023nS9oQBI'
+BOT_TOKEN = 'your token hear'
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
